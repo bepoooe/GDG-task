@@ -9,10 +9,16 @@ class GitHubService {
       headers: {
         'Accept': 'application/vnd.github.v3+json',
         ...(process.env.REACT_APP_GITHUB_TOKEN && {
-          'Authorization': `token ${process.env.REACT_APP_GITHUB_TOKEN}`
+          'Authorization': `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
         })
       }
     });
+
+    // Log authentication status (without exposing the token)
+    console.log('GitHub API initialized with token:', !!process.env.REACT_APP_GITHUB_TOKEN);
+    if (process.env.REACT_APP_GITHUB_TOKEN) {
+      console.log('Token preview:', process.env.REACT_APP_GITHUB_TOKEN.substring(0, 8) + '...');
+    }
   }
 
   async getRepository(owner, repo) {
