@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import './LanguageChart.css';
 
 const LanguageChart = ({ languages }) => {
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   if (!languages || Object.keys(languages).length === 0) {
     return (
       <div className="language-chart">
@@ -51,6 +61,10 @@ const LanguageChart = ({ languages }) => {
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
+    // Determine font size based on current window width
+    const isMobile = windowWidth <= 768;
+    const fontSize = isMobile ? "10" : "12";
+
     return (
       <text 
         x={x} 
@@ -58,7 +72,7 @@ const LanguageChart = ({ languages }) => {
         fill="white" 
         textAnchor={x > cx ? 'start' : 'end'} 
         dominantBaseline="central"
-        fontSize="12"
+        fontSize={fontSize}
         fontWeight="bold"
       >
         {`${percentage}%`}
@@ -66,19 +80,26 @@ const LanguageChart = ({ languages }) => {
     );
   };
 
+  // Calculate responsive radius based on current window width
+  const getOuterRadius = () => {
+    if (windowWidth <= 480) return 70;  // Small mobile
+    if (windowWidth <= 768) return 90;  // Tablet/large mobile
+    return 120; // Desktop
+  };
+
   return (
     <div className="language-chart">
       <h3>Language Composition</h3>
       <div className="chart-container">
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
               data={chartData}
               cx="50%"
-              cy="50%"
+              cy="45%"
               labelLine={false}
               label={renderCustomLabel}
-              outerRadius={120}
+              outerRadius={getOuterRadius()}
               fill="#8884d8"
               dataKey="value"
             >
@@ -91,6 +112,7 @@ const LanguageChart = ({ languages }) => {
               verticalAlign="bottom" 
               height={36}
               formatter={(value, entry) => `${value} (${entry.payload.percentage}%)`}
+              wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }}
             />
           </PieChart>
         </ResponsiveContainer>
