@@ -14,7 +14,7 @@ const Header = () => {
           </div>
           <div className="brand-info">
             <h1 className="app-title">GitScope Analytics</h1>
-            <p className="app-subtitle">Comprehensive GitHub Repository Insights</p>
+            <p className="app-subtitle"></p>
           </div>
         </div>
         <div className="header-decoration">

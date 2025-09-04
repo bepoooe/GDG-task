@@ -91,12 +91,13 @@
 }
 
 .app-subtitle {
-  font-size: 0.9rem;
-  margin: 0;
-  opacity: 0.9;
+  font-size: 1.2rem;
+  margin: 1;
+  opacity: 2;
   font-weight: 500;
   color: #F5DEB3;
   letter-spacing: 0.5px;
+  padding-top: 0px; /* Reduced padding to move the subtitle higher */
 }
 
 .header-decoration {
