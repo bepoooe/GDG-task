@@ -2,7 +2,7 @@ import React from 'react';
 import { Star, GitFork, AlertCircle, Scale, ExternalLink } from 'lucide-react';
 import './StatsCard.css';
 
-const StatsCard = ({ repoData }) => {
+const StatsCard = ({ repoData, compact = false }) => {
   if (!repoData) return null;
 
   const formatNumber = (num) => {
@@ -16,15 +16,15 @@ const StatsCard = ({ repoData }) => {
   };
 
   return (
-    <div className="stats-card">
+    <div className={`stats-card ${compact ? 'stats-card-compact' : ''}`}>
       <div className="repo-header">
         <h2 className="repo-title">
           <a href={repoData.html_url} target="_blank" rel="noopener noreferrer">
             {repoData.full_name}
-            <ExternalLink size={20} />
+            <ExternalLink size={compact ? 16 : 20} />
           </a>
         </h2>
-        {repoData.description && (
+        {repoData.description && !compact && (
           <p className="repo-description">{repoData.description}</p>
         )}
       </div>
@@ -46,37 +46,43 @@ const StatsCard = ({ repoData }) => {
           </div>
         </div>
 
-        <div className="stat-item">
-          <AlertCircle className="stat-icon" />
-          <div className="stat-content">
-            <span className="stat-value">{formatNumber(repoData.open_issues_count)}</span>
-            <span className="stat-label">Open Issues</span>
-          </div>
-        </div>
+        {!compact && (
+          <>
+            <div className="stat-item">
+              <AlertCircle className="stat-icon" />
+              <div className="stat-content">
+                <span className="stat-value">{formatNumber(repoData.open_issues_count)}</span>
+                <span className="stat-label">Open Issues</span>
+              </div>
+            </div>
 
-        <div className="stat-item">
-          <Scale className="stat-icon" />
-          <div className="stat-content">
-            <span className="stat-value">{repoData.license?.name || 'No License'}</span>
-            <span className="stat-label">License</span>
-          </div>
-        </div>
+            <div className="stat-item">
+              <Scale className="stat-icon" />
+              <div className="stat-content">
+                <span className="stat-value">{repoData.license?.name || 'No License'}</span>
+                <span className="stat-label">License</span>
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
-      <div className="repo-meta">
-        <div className="meta-item">
-          <strong>Language:</strong> {repoData.language || 'Not specified'}
+      {!compact && (
+        <div className="repo-meta">
+          <div className="meta-item">
+            <strong>Language:</strong> {repoData.language || 'Not specified'}
+          </div>
+          <div className="meta-item">
+            <strong>Created:</strong> {formatDate(repoData.created_at)}
+          </div>
+          <div className="meta-item">
+            <strong>Updated:</strong> {formatDate(repoData.updated_at)}
+          </div>
+          <div className="meta-item">
+            <strong>Size:</strong> {formatNumber(repoData.size)} KB
+          </div>
         </div>
-        <div className="meta-item">
-          <strong>Created:</strong> {formatDate(repoData.created_at)}
-        </div>
-        <div className="meta-item">
-          <strong>Updated:</strong> {formatDate(repoData.updated_at)}
-        </div>
-        <div className="meta-item">
-          <strong>Size:</strong> {formatNumber(repoData.size)} KB
-        </div>
-      </div>
+      )}
     </div>
   );
 };

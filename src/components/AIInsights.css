@@ -1,12 +1,13 @@
 .ai-insights {
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+  background: var(--accent-gradient);
   color: white;
-  border-radius: 16px;
+  border-radius: var(--border-radius);
   padding: 2rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-lg);
   margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
+  border: 1px solid var(--soft-sand);
 }
 
 .ai-insights::before {
@@ -16,7 +17,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
   pointer-events: none;
 }
 
@@ -49,12 +50,12 @@
 }
 
 .insight-card {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius);
   padding: 1.75rem;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   position: relative;
   overflow: hidden;
 }
@@ -66,15 +67,15 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .insight-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .insight-card:hover::before {
@@ -96,9 +97,9 @@
 }
 
 .insight-icon {
-  color: #fbbf24;
+  color: #fde68a;
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 2px 4px rgba(60, 46, 38, 0.2));
 }
 
 .insight-header h4 {
@@ -122,9 +123,9 @@
   height: 80px;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.1) 25%, 
-    rgba(255, 255, 255, 0.2) 50%, 
-    rgba(255, 255, 255, 0.1) 75%
+    rgba(255, 255, 255, 0.15) 25%, 
+    rgba(255, 255, 255, 0.25) 50%, 
+    rgba(255, 255, 255, 0.15) 75%
   );
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
@@ -137,8 +138,8 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
   border-radius: 12px;
   padding: 1.25rem;
   color: #fecaca;

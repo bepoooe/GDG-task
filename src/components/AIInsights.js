@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, Code, Users, AlertTriangle, RefreshCw } from 'lucide-react';
+import { Brain, Code, Users, AlertTriangle, RefreshCw, Lightbulb, Sparkles } from 'lucide-react';
 import './AIInsights.css';
 
 const AIInsights = ({ insights, loading, error, onRetry }) => {
@@ -19,7 +19,8 @@ const AIInsights = ({ insights, loading, error, onRetry }) => {
             <div>Failed to generate AI insights: {error}</div>
             {isRateLimit && (
               <div style={{ marginTop: '0.5rem', fontSize: '0.9rem', opacity: 0.8 }}>
-                💡 Tip: The free Gemini API has limited requests per minute. 
+                <Lightbulb size={16} style={{ display: 'inline', marginRight: '0.5rem' }} />
+                Tip: The free Gemini API has limited requests per minute. 
                 Wait a moment and try again, or consider upgrading your API plan.
               </div>
             )}
@@ -31,26 +32,24 @@ const AIInsights = ({ insights, loading, error, onRetry }) => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
+                  background: 'var(--accent-gradient)',
                   color: 'white',
                   border: 'none',
                   padding: '0.75rem 1.5rem',
-                  borderRadius: '8px',
+                  borderRadius: '12px',
                   cursor: 'pointer',
                   fontSize: '0.9rem',
                   fontWeight: '600',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  transition: 'var(--transition)',
+                  boxShadow: 'var(--shadow-md)'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)';
                   e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+                  e.target.style.boxShadow = 'var(--shadow-lg)';
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)';
                   e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                  e.target.style.boxShadow = 'var(--shadow-md)';
                 }}
               >
                 <RefreshCw size={16} />
@@ -102,7 +101,8 @@ const AIInsights = ({ insights, loading, error, onRetry }) => {
           </div>
         </div>
         <p style={{ textAlign: 'center', marginTop: '1rem', opacity: 0.8, fontSize: '0.9rem' }}>
-          🤖 Generating insights sequentially to respect API rate limits...
+          <Sparkles size={16} style={{ display: 'inline', marginRight: '0.5rem' }} />
+          Generating insights sequentially to respect API rate limits...
         </p>
       </div>
     );
