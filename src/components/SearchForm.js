@@ -6,8 +6,8 @@ const SearchForm = ({
   onSearch, 
   loading, 
   isComparisonMode = false,
-  placeholder1 = "Repository Owner (e.g., facebook)",
-  placeholder2 = "Repository Name (e.g., react)",
+  placeholder1 = "Repository Owner",
+  placeholder2 = "Repository Name",
   buttonText = "Analyze Repository",
   compact = false
 }) => {
