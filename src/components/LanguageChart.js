@@ -23,11 +23,11 @@ const LanguageChart = ({ languages }) => {
     }))
     .sort((a, b) => b.value - a.value);
 
-  // Color palette for different languages
+  // Theme-appropriate color palette
   const COLORS = [
-    '#0366d6', '#28a745', '#ffd33d', '#f1502f', '#563d7c',
-    '#e34c26', '#f1e05a', '#083fa1', '#178600', '#cb171e',
-    '#555555', '#c6538c', '#3572a5', '#89e051', '#701516'
+    '#8B4513', '#D2691E', '#CD853F', '#DEB887', '#F4A460',
+    '#D2B48C', '#BC8F8F', '#A0522D', '#B8860B', '#DAA520',
+    '#B22222', '#CD5C5C', '#F5DEB3', '#FFEFD5', '#E6E6FA'
   ];
 
   const CustomTooltip = ({ active, payload }) => {

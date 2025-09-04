@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import Header from './components/Header';
 import SearchForm from './components/SearchForm';
 import StatsCard from './components/StatsCard';
 import LanguageChart from './components/LanguageChart';
 import CommitChart from './components/CommitChart';
+import TrendsChart from './components/TrendsChart';
 import AIInsights from './components/AIInsights';
 import RepoComparison from './components/RepoComparison';
 import githubService from './services/githubService';
@@ -180,6 +182,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <div className="container">
         <SearchForm 
           onSearch={handleSearch} 
@@ -248,6 +251,7 @@ function App() {
                 <StatsCard repoData={repoData} />
                 <LanguageChart languages={languages} />
                 <CommitChart commitActivity={commitActivity} />
+                <TrendsChart repoData={repoData} commitActivity={commitActivity} />
                 <AIInsights 
                   insights={aiInsights} 
                   loading={aiLoading} 

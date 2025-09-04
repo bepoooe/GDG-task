@@ -1,9 +1,9 @@
 .language-chart {
   background: var(--card-background);
   border-radius: var(--border-radius);
-  padding: 2rem;
+  padding: 2.5rem;
   box-shadow: var(--shadow-lg);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   border: 1px solid var(--border-color);
   transition: var(--transition);
   backdrop-filter: blur(10px);
@@ -98,7 +98,7 @@
 
 .language-percentage {
   font-weight: 700;
-  color: #1e40af;
+  color: #8B4513;
   font-size: 1rem;
 }
 

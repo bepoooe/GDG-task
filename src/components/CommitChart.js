@@ -83,10 +83,10 @@ const CommitChart = ({ commitActivity }) => {
             <Line 
               type="monotone" 
               dataKey="commits" 
-              stroke="#0366d6" 
+              stroke="#8B4513" 
               strokeWidth={2}
-              dot={{ fill: '#0366d6', strokeWidth: 2, r: 4 }}
-              activeDot={{ r: 6, stroke: '#0366d6', strokeWidth: 2, fill: 'white' }}
+              dot={{ fill: '#8B4513', strokeWidth: 2, r: 4 }}
+              activeDot={{ r: 6, stroke: '#8B4513', strokeWidth: 2, fill: 'white' }}
             />
           </LineChart>
         </ResponsiveContainer>
